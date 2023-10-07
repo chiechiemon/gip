@@ -1,0 +1,85 @@
+* {
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    background-image: url('../../assets/background.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin-top: 10rem;
+}
+
+body {
+    color: #000;
+    max-width: 40%;
+    max-height: 50%;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 0.3rem solid #000;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-clip: border-box;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#login {
+    font-size: 3rem;
+    color: black;
+    margin-bottom: 1rem;
+}
+
+.input-container {
+    margin-bottom: 1rem;
+}
+
+.input-field {
+    height: 3rem;
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 1rem;
+    border: 0.3rem solid black;
+    border-radius: 0.5rem;
+    background: transparent;
+    margin-bottom: 0.5rem;
+}
+
+#mail,
+#wachtwoord {
+    font-size: 2rem;
+    color: #444;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.registratie {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#registratie {
+    font-size: 2.4rem;
+    color: black;
+}
+
+#link {
+    text-decoration: underline;
+    cursor: pointer;
+    color: blue;
+}
