@@ -83,3 +83,7 @@ label {
     cursor: pointer;
     color: blue;
 }
+
+#LogInButton {
+    size: 30px;
+}
