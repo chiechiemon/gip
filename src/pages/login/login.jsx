@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../components/loginbutton';
+import Google from '../../components/googleLogin.jsx';
 
 function Login() {
   return (
@@ -9,7 +9,7 @@ function Login() {
       <input type="text" id="email_box" className="input-field" />
       <label id="wachtwoord">Wachtwoord</label>
       <input type="password" id="wachtwoord_box" className="input-field" />
-      <Button></Button>
+      <Google /> 
       <p id="registratie">Nog geen account? Registreer je <span id="link">hier</span>.</p>
     </div>
   );
