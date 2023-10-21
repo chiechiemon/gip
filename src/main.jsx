@@ -1,19 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Login from './pages/login/login'; // Adjust the path based on your folder structure
-import './pages/login/Login.css'; // Adjust the path based on your folder structure
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import Login from './pages/login/login';
+import Register from './pages/register/signup'; 
+import './pages/login/login.css';
 
-function App() {
-  return (
-    <div>
-      <Login />
-    </div>
-  );
-}
+const root = createRoot(document.getElementById('root'));
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+root.render(
+  <BrowserRouter>
+    <React.StrictMode>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </React.StrictMode>
+  </BrowserRouter>
 );
