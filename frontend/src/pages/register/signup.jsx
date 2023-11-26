@@ -1,19 +1,33 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
-import '../../pages/register/signup.css';
+import { useNavigate } from 'react-router-dom'; 
+import './signup.css';
 
 function Signup() {
   const [usernameReg, setUsernameReg] = useState('');
   const [passwordReg, setPasswordReg] = useState('');
   const [emailReg, setEmailReg] = useState('');
+  const navigate = useNavigate(); 
 
   const register = () => {
     Axios.post('http://localhost:3001/register', {
       username: usernameReg,
       password: passwordReg,
       email: emailReg,
-    });
+    })
+      .then((response) => {
+        console.log('Success:', response.data);
+        if (response.data.success) {
+          navigate('/home'); 
+        } else {
+          console.error('Registration failed:', response.data.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
+  
 
   const handleUsernameChange = (e) => {
     setUsernameReg(e.target.value);

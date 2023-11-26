@@ -1,28 +1,27 @@
-import Axios from 'axios';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import GoogleLogin from '../../components/googleLogin';
-
-
-
+import Axios from "axios";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import GoogleLogin from "../../components/googleLogin";
+import "./login.css";
 
 function Login() {
-
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const login = (e) => {
-    e.preventDefault();  
-    Axios.post('http://localhost:3001/login', {
+    e.preventDefault();
+    Axios.post("http://localhost:3001/login", {
       password: password,
       email: email,
     })
-    .then((response) => {
-      console.log('Success:', response.data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then((response) => {
+        console.log("Success:", response.data);
+        navigate("/home");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const handlePasswordChange = (e) => {
@@ -38,11 +37,11 @@ function Login() {
       <form onSubmit={login}>
         <h1>Multilingual</h1>
         <div className="input-box underline">
-          <input type="text" placeholder='Enter Your Email' required onChange={handleEmailChange}/>
+          <input type="text" placeholder="Enter Your Email" required onChange={handleEmailChange} />
           <div className="underline"></div>
         </div>
         <div className="input-box underline">
-          <input type="password" placeholder='Enter Your Password' required onChange={handlePasswordChange}/>
+          <input type="password" placeholder="Enter Your Password" required onChange={handlePasswordChange} />
           <div className="underline"></div>
         </div>
         <div className="button">
@@ -57,7 +56,7 @@ function Login() {
           <GoogleLogin />
         </div>
         <div className="signup-link">
-          No account yet? Sign up <Link to="/register"> here</Link>
+          No account yet? Sign up <Link to="/register">here</Link>
         </div>
       </form>
     </div>
