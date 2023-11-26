@@ -1,18 +1,48 @@
-import React from 'react';
+import Axios from 'axios';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GoogleLogin from '../../components/googleLogin';
 
+
+
+
 function Login() {
+
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+
+  const login = (e) => {
+    e.preventDefault();  
+    Axios.post('http://localhost:3001/login', {
+      password: password,
+      email: email,
+    })
+    .then((response) => {
+      console.log('Success:', response.data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
   return (
     <div className="container">
-      <form>
+      <form onSubmit={login}>
         <h1>Multilingual</h1>
         <div className="input-box underline">
-          <input type="text" placeholder='Enter Your Email' required />
+          <input type="text" placeholder='Enter Your Email' required onChange={handleEmailChange}/>
           <div className="underline"></div>
         </div>
         <div className="input-box underline">
-          <input type="password" placeholder='Enter Your Password' required />
+          <input type="password" placeholder='Enter Your Password' required onChange={handlePasswordChange}/>
           <div className="underline"></div>
         </div>
         <div className="button">
