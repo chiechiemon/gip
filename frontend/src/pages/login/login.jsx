@@ -33,7 +33,8 @@ function Login() {
   };
 
   return (
-    <div className="container">
+    <div className="login">
+    <div className="container" >
       <form onSubmit={login}>
         <h1>Multilingual</h1>
         <div className="input-box underline">
@@ -59,6 +60,7 @@ function Login() {
           No account yet? Sign up <Link to="/register">here</Link>
         </div>
       </form>
+    </div>
     </div>
   );
 }

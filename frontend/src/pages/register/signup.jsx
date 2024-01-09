@@ -9,7 +9,14 @@ function Signup() {
   const [emailReg, setEmailReg] = useState('');
   const navigate = useNavigate(); 
 
-  const register = () => {
+  const register = (e) => {
+    e.preventDefault(); 
+
+    if (!usernameReg || !emailReg || !passwordReg) {
+      alert('Please fill in all fields');
+      return;
+    }
+
     Axios.post('http://localhost:3001/register', {
       username: usernameReg,
       password: passwordReg,
@@ -27,7 +34,6 @@ function Signup() {
         console.error('Error:', error);
       });
   };
-  
 
   const handleUsernameChange = (e) => {
     setUsernameReg(e.target.value);
@@ -42,45 +48,47 @@ function Signup() {
   };
 
   return (
-    <div className="container">
-      <form>
-        <h1 className="title">Sign Up</h1>
-        <div className="input-box underline">
-          <input
-            type="text"
-            placeholder="Enter Your Username"
-            value={usernameReg}
-            onChange={handleUsernameChange}
-            required
-          />
-          <div className="underline"></div>
-        </div>
-        <div className="input-box underline">
-          <input
-            type="text"
-            placeholder="Enter Your Email"
-            value={emailReg}
-            onChange={handleEmailChange}
-            required
-          />
-          <div className="underline"></div>
-        </div>
-        <div className="input-box underline">
-          <input
-            type="password"
-            placeholder="Enter Your Password"
-            value={passwordReg}
-            onChange={handlePasswordChange}
-            required
-          />
-          <div className="underline"></div>
-        </div>
-        <div className="button">
-          <button id="button" type="button" onClick={register}>
-            Create account
-          </button>
-        </div>
-      </form>
+    <div className="signup">
+      <div className="container">
+        <form onSubmit={register}>
+          <h1 className="title">Sign Up</h1>
+          <div className="input-box underline">
+            <input
+              type="text"
+              placeholder="Enter Your Username"
+              value={usernameReg}
+              onChange={handleUsernameChange}
+              required
+            />
+            <div className="underline"></div>
+          </div>
+          <div className="input-box underline">
+            <input
+              type="text"
+              placeholder="Enter Your Email"
+              value={emailReg}
+              onChange={handleEmailChange}
+              required
+            />
+            <div className="underline"></div>
+          </div>
+          <div className="input-box underline">
+            <input
+              type="password"
+              placeholder="Enter Your Password"
+              value={passwordReg}
+              onChange={handlePasswordChange}
+              required
+            />
+            <div className="underline"></div>
+          </div>
+          <div className="button">
+            <button id="button" type="submit">
+              Create account
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
