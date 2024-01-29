@@ -1,7 +1,6 @@
 import Axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import GoogleLogin from "../../components/googleLogin";
 import "./login.css";
 
 function Login() {
@@ -52,9 +51,6 @@ function Login() {
           <hr />
           <div className="or-text">OR</div>
           <hr />
-        </div>
-        <div className="option">
-          <GoogleLogin />
         </div>
         <div className="signup-link">
           No account yet? Sign up <Link to="/register">here</Link>

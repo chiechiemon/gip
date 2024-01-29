@@ -10,7 +10,7 @@
     height: 100vh;
     width: 100%;
     place-items: center;
-    background-image: url('../../assets/background.jpeg');
+    background-image: url('../public/assets/background.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -29,12 +29,17 @@
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
   }
 
-  .container form .title {
-    font-size: 30px;
-    font-weight: 600;
-    margin: 20px 0 10px 0;
-    position: relative;
-  }
+  .container form .title:before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 33px;
+    left: 0px;
+    bottom: 3px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #99004d 0%, #ff0080 100%);
+}
+
   
   
   .container form .input-box {

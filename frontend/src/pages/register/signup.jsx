@@ -10,22 +10,23 @@ function Signup() {
   const navigate = useNavigate(); 
 
   const register = (e) => {
-    e.preventDefault(); 
-
+    e.preventDefault();
+  
     if (!usernameReg || !emailReg || !passwordReg) {
       alert('Please fill in all fields');
       return;
     }
-
+  
     Axios.post('http://localhost:3001/register', {
       username: usernameReg,
       password: passwordReg,
       email: emailReg,
     })
       .then((response) => {
+        console.log('Response:', response);
         console.log('Success:', response.data);
         if (response.data.success) {
-          navigate('/home'); 
+          navigate('/home');
         } else {
           console.error('Registration failed:', response.data.message);
         }
@@ -34,6 +35,7 @@ function Signup() {
         console.error('Error:', error);
       });
   };
+  
 
   const handleUsernameChange = (e) => {
     setUsernameReg(e.target.value);
@@ -50,7 +52,7 @@ function Signup() {
   return (
     <div className="signup">
       <div className="container">
-        <form onSubmit={register}>
+      <form onSubmit={register}>
           <h1 className="title">Sign Up</h1>
           <div className="input-box underline">
             <input
@@ -91,6 +93,7 @@ function Signup() {
       </div>
     </div>
   );
+  
 }
 
 export default Signup;
